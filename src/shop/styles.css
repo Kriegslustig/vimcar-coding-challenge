@@ -1,0 +1,60 @@
+.shop {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.item {
+  position: relative;
+  margin: 2rem;
+  width: 90%;
+  max-width: 250px;
+}
+
+/* I had to use a pseudo element to prevent the shadows from overlapping */
+.item::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -10;
+ box-shadow: 0 0 30px hsla(0, 0%, 80%, .8);
+}
+
+.item__image-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.item__image {
+  width: 100%;
+}
+
+.item__add-wrapper {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0;
+  /* My favourite color system */
+  background-color: hsla(0, 0%, 100%, .8);
+  transition: opacity .2s;
+}
+
+.item__add-wrapper:hover {
+  opacity: 1;
+}
+
+.item__add {
+  display: block;
+  color: #000;
+  padding: 1rem;
+  border: 2px #000 solide;
+}
+

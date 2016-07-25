@@ -4,6 +4,7 @@ import { Observable as O } from 'rx'
  */
 import { DOM } from 'rx-dom'
 
+import './styles.css'
 import shopView from './view.pug'
 
 export default ({ cartController, navigate, cart }) => (state, state$) => {

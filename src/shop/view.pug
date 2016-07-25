@@ -1,18 +1,21 @@
 !{cart}
-- for item in items
-  - const classes = ['item']
-  if (item.offer)
-    - classes.push('item--offer')
-  if (item.new)
-    - classes.push('item--new')
-  article(data-id=item.id class=classes)
-    img(src=item.image alt=item.name)
-    a.item__add Add to cart
-    h3.item__name= item.name
-    if item.offer
-      p.item__price
-        span.item__price--old= item.price
-        span.item__price--offer= item.price
-    else
-        p.item__price= item.price
+section.shop
+  - for item in items
+    - const classes = ['item']
+    if (item.offer)
+      - classes.push('item--offer')
+    if (item.new)
+      - classes.push('item--new')
+    article(data-id=item.id class=classes)
+      div.item__image-wrapper
+        img.item__image(src=item.image alt=item.name)
+        div.item__add-wrapper
+          a.item__add Add to cart
+      h3.item__name= item.name
+      if item.offer
+        p.item__price
+          span.item__price--old= item.price
+          span.item__price--offer= item.price
+      else
+          p.item__price= item.price
 
