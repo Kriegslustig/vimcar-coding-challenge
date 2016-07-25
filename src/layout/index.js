@@ -9,14 +9,14 @@ const callAfterRender = container => component => {
   if (component.components) component.components.forEach(callAfterRender(container))
 }
 
-export default container => content$ => {
+export default (container, navigation) => content$ => {
   content$.subscribe(
     /* Whenever something is sent through `content$` I throw it into the DOM.
      * This could easily be replaced with some virtual-dom implementation. But
      * since this is such a small app, I don't think it's really necessary.
      */
     component => {
-      container.innerHTML = layoutView({ content: component.render() })
+      container.innerHTML = layoutView({ content: component.render(), navigation })
       callAfterRender(container)(component)
     },
     err => {

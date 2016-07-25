@@ -12,6 +12,13 @@ const items = storage.map((s, i) => {
   return s
 })
 
+const navigation = [
+  { name: 'Shop', url: '#/' },
+  { name: 'Journal', url: '#/journal' },
+  { name: 'About', url: '#/about' },
+  { name: 'More', url: '#/more' }
+]
+
 /* `state$` contains all (or most) state of the application. It's a Rx.Subject,
  * which is basically an observable observer. So it's comparable to a event-
  * emitter. It could easily be extended so it would synch the storage to a
@@ -26,6 +33,7 @@ const content$ =
     .withLatestFrom(router())
     /* Used for debugging */
     .map(([state, action]) => action(state, state$))
-layout(container)(content$)
+layout(container, navigation)(content$)
+
 state$.onNext({ cart: [], items })
 

@@ -1,5 +1,10 @@
 header
-  h1 Vimcar Coding Challenge
+  img.logo(src="https://github.com/vimcar/frontend-challenge/raw/master/design/vimcar-logo.svg" alt="Vimcar Logo")
+  nav.nav
+    ul.nav__list
+      for link in navigation
+        li.nav__link
+          a(href=link.url)= link.name
 main!= content
 footer
   p Fuled by Mayers coffee
