@@ -5,9 +5,32 @@
 import { Observable as O } from 'rx'
 import { createHashHistory } from 'history'
 
+import cartController from './lib/cartController'
+
 import shop from './shop'
 import cart from './cart'
 import _404 from './404'
+
+/* A simple helper function that creates a stream (that cleans its listeners up
+ * after the stream ends) from `history`.
+ */
+const navigate = first => {
+  let unlisten
+  return (
+    O.create(o => {
+      unlisten = history.listen(location => {
+        o.onNext(location)
+      })
+      if (first) o.onNext(history.getCurrentLocation())
+    })
+    .finally(() => {
+      /* clean up. Since `unlisten` just goes out of scope here, I don't need
+       * to override it with null or something.
+       */
+      unlisten()
+    })
+  )
+}
 
 /* This simple router doesn't support dynamic routes, but it could easily be
  * extended to include that feature.
@@ -20,8 +43,8 @@ const routes = {
    * available in `shop` without breaking the rule I just described, I need to
    * inject that dep. (also: I love currying)
    */
-  '/': shop({ cart }),
-  '404': _404({ cart })
+  '/': shop({ cart: cart({ cartController }), navigate, cartController }),
+  '404': _404({ cart: cart({ navigate, cartController }) })
 }
 
 /* I can't use the push API here, since I don't control the server. The app may
@@ -30,26 +53,6 @@ const routes = {
  */
 const history = createHashHistory()
 
-/* A simple helper function that creates a stream (that cleans its listeners up
- * after the stream ends) from `history`.
- */
-const navigate = () => {
-  let listener
-  return (
-    O.create(o => {
-      listener = history.listen(location => {
-        o.onNext(location)
-      })
-    })
-    .finally(() => {
-      /* clean up. Since `listener` just goes out of scope here, I don't need
-       * to override it with null or something.
-       */
-      listener.unlisten()
-    })
-  )
-}
-
 export default () =>
-  navigate().map(location => routes[location.pathname] || routes[404])
+  navigate(true).map(location => routes[location.pathname] || routes[404])
 
