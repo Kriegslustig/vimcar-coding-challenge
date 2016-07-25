@@ -3,6 +3,7 @@
  */
 
 import layoutView from './view.pug'
+import './styles.css'
 
 const callAfterRender = container => component => {
   if (component.afterRender) component.afterRender(container)

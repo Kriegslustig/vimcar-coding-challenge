@@ -1,5 +1,6 @@
 import Rx from 'rx'
 
+import './styles.css'
 import layout from './layout'
 import router from './router'
 import storage from './storage.json'
@@ -13,7 +14,8 @@ const items = storage.map((s, i) => {
 })
 
 const navigation = [
-  { name: 'Shop', url: '#/' },
+  /* The active property is static, to save some work */
+  { name: 'Shop', url: '#/', active: true },
   { name: 'Journal', url: '#/journal' },
   { name: 'About', url: '#/about' },
   { name: 'More', url: '#/more' }
