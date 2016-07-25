@@ -21,7 +21,7 @@ const routes = {
    * inject that dep. (also: I love currying)
    */
   '/': shop({ cart }),
-  '404': _404()
+  '404': _404({ cart })
 }
 
 /* I can't use the push API here, since I don't control the server. The app may
