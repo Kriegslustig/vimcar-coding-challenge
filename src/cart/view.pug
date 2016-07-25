@@ -1,8 +1,8 @@
 section.cart
   h3 Cart
   ul.cartItems
-    - for item in items
-      li.cartItems__item(data-id=id)
-        p #{name} (#{count})
+    - for item in cart
+      li.cartItems__item(data-id=item.id)
+        p #{item.name} (#{item.count})
         button.cartItems__less -
 

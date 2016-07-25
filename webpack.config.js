@@ -41,6 +41,7 @@ module.exports = {
        * JavaScript, performs okay, and has a beautiful and concise syntax.
        */
       { test: /\.pug$/, include: [ sourcePath ], loader: 'jade' },
+      { test: /\.json/, include: [ sourcePath ], loader: 'json' },
       {
         test: /\.css$/,
         /* I love PostCSS, another very obvious choice. It's very fast and has

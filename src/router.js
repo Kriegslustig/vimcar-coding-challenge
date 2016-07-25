@@ -5,7 +5,7 @@
 import { Observable as O } from 'rx'
 import { createHashHistory } from 'history'
 
-import cartController from './lib/cartController'
+import * as cartController from './lib/cartController'
 
 import shop from './shop'
 import cart from './cart'
@@ -43,7 +43,7 @@ const routes = {
    * available in `shop` without breaking the rule I just described, I need to
    * inject that dep. (also: I love currying)
    */
-  '/': shop({ cart: cart({ cartController }), navigate, cartController }),
+  '/': shop({ cart: cart({ navigate, cartController }), navigate, cartController }),
   '404': _404({ cart: cart({ navigate, cartController }) })
 }
 

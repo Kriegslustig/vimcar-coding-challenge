@@ -6,7 +6,7 @@ import layoutView from './view.pug'
 
 const callAfterRender = container => component => {
   if (component.afterRender) component.afterRender(container)
-  if (component.compontents) component.components.forEach(callAfterRender(container))
+  if (component.components) component.components.forEach(callAfterRender(container))
 }
 
 export default container => content$ => {

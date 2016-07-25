@@ -1,5 +1,6 @@
+div.cart!= cart
 - for item in items
-  article.item(data-id=id)
-    h3 name
+  article.item(data-id=item.id)
+    h3= item.name
     button.item__add Add to cart
 

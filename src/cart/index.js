@@ -9,9 +9,9 @@ export default ({ cartController, navigate }) => (state, state$) => ({
     const clicks$ =
       Array.from(container.querySelectorAll('.cartItems__less'))
         .map(el => DOM.click(el))
-        .takeUntil(navigate())
     O.merge(clicks$)
       .map(e => e.target.parentNode.dataset.id)
+      .takeUntil(navigate())
       .subscribeOnNext(id => {
         state$.onNext(cartController.remove(state, id))
       })
