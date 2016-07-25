@@ -1,5 +1,31 @@
 [
-  { "id": 1, "name": "Steering Wheel" },
-  { "id": 2, "name": "Marvin" }
+  {
+    "name": "42mm Space Gray Aluminum Case with Black Woven Nylon",
+    "image": "https://github.com/vimcar/frontend-challenge/blob/master/design/s42sg-nsbk-sel-201603@2x.png?raw=true",
+    "price": 249.99
+  },
+  {
+    "name": "42mm Gold Aluminum Case with Gold/Royal Blue Woven Nylon",
+    "image": "https://github.com/vimcar/frontend-challenge/blob/master/design/s42gd-nsgb-sel-201603@2x.png?raw=true",
+    "price": 299.99
+  },
+  {
+    "name": "42mm Rose Gold Aluminum Case with Gold/Royal Blue Woven Nylon",
+    "image": "https://github.com/vimcar/frontend-challenge/blob/master/design/s42gd-nsgb-sel-201603@2x.png?raw=true",
+    "price": 349.99
+  },
+  {
+    "name": "42mm Silver Aluminum Case with Scuba Blue Woven Nylon",
+    "image": "https://github.com/vimcar/frontend-challenge/blob/master/design/s42gd-nsgb-sel-201603@2x.png?raw=true",
+    "price": 349.99,
+    "offer": 374.99,
+    "new": true
+  },
+  {
+    "name": "Double Tour 38mm Stainless Steel Case with Capucine Leather Band",
+    "image": "https://github.com/vimcar/frontend-challenge/blob/master/design/h38ss-dtrd-sel-201603@2x.png?raw=true",
+    "price": 349.99,
+    "offer": 349.99
+  }
 ]
 

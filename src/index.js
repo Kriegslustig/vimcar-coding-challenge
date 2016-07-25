@@ -2,7 +2,15 @@ import Rx from 'rx'
 
 import layout from './layout'
 import router from './router'
-import items from './storage.json'
+import storage from './storage.json'
+
+/* I was too lazy to add an ID to every item manually. So this "stubs" IDs for
+ * the items in `storage`
+ */
+const items = storage.map((s, i) => {
+  s.id = i
+  return s
+})
 
 /* `state$` contains all (or most) state of the application. It's a Rx.Subject,
  * which is basically an observable observer. So it's comparable to a event-

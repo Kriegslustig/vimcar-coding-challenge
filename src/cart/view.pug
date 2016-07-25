@@ -2,7 +2,15 @@ section.cart
   h3 Cart
   ul.cartItems
     - for item in cart
-      li.cartItems__item(data-id=item.id)
-        p #{item.name} (#{item.count})
-        button.cartItems__less -
+      article.item.item--cart(data-id=item.id)
+        p.item__name.item--cart__name (#{item.count}) #{item.name}
+        img(src=item.image alt=item.name)
+        if item.offer
+          p.item__price
+            span.item__price--old= item.price
+            span.item__price--offer= item.price
+        else
+            p.item__price= item.price
+            p #{item.name} (#{item.count})
+        a.item__less -
 

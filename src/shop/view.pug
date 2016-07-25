@@ -1,6 +1,18 @@
-div.cart!= cart
+!{cart}
 - for item in items
-  article.item(data-id=item.id)
-    h3= item.name
-    button.item__add Add to cart
+  - const classes = ['item']
+  if (item.offer)
+    - classes.push('item--offer')
+  if (item.new)
+    - classes.push('item--new')
+  article(data-id=item.id class=classes)
+    img(src=item.image alt=item.name)
+    a.item__add Add to cart
+    h3.item__name= item.name
+    if item.offer
+      p.item__price
+        span.item__price--old= item.price
+        span.item__price--offer= item.price
+    else
+        p.item__price= item.price
 
