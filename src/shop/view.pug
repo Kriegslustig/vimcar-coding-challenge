@@ -6,11 +6,11 @@ section.shop
       - classes.push('item--offer')
     if (item.new)
       - classes.push('item--new')
-    article(data-id=item.id class=classes)
+    article(class=classes)
       div.item__image-wrapper
         img.item__image(src=item.image alt=item.name)
         div.item__add-wrapper
-          a.item__add Add to cart
+          a.item__add(data-id=item.id) Add to cart
       h3.item__name= item.name
       if item.offer
         p.item__price

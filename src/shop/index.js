@@ -16,7 +16,7 @@ export default ({ cartController, navigate, cart }) => (state, state$) => {
         Array.from(container.querySelectorAll('.item__add'))
           .map(el => DOM.click(el))
       O.merge(add$)
-        .map(e => e.target.parentNode.dataset.id)
+        .map(e => e.target.dataset.id)
         /* Terminate the observable when a navigation occurs. This will also
          * remove the set event-listeners
          */
